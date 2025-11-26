@@ -6,7 +6,6 @@ RUN corepack enable
 
 COPY package.json pnpm-lock.yaml ./
 COPY tsconfig.json ./
-COPY tsconfig.paths.json ./
 
 COPY . .
 
