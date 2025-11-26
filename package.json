@@ -1,0 +1,45 @@
+{
+  "name": "number-communication-server",
+  "version": "1.0.0",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx src/utils/seed.ts",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc & tsc-alias",
+    "start": "pm2 start dist/index.js --name number-comm-api",
+    "stop": "pm2 stop number-comm-api",
+    "logs": "pm2 logs number-comm-api"
+  },
+  "tsx": {
+    "tsconfig": "./tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/express-session": "^1.18.2",
+    "@types/node": "^24.10.1",
+    "@types/pg": "^8.15.6",
+    "@types/ws": "^8.18.1",
+    "express": "^5.1.0",
+    "pm2": "^6.0.13",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.20.6"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "drizzle-kit": "^0.31.7",
+    "drizzle-orm": "^0.44.7",
+    "express-session": "^1.18.2",
+    "pg": "^8.16.3",
+    "ws": "^8.18.3",
+    "zod": "^4.1.13"
+  }
+}

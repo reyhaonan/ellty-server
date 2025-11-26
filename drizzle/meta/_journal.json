@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1764114852238,
+      "tag": "0000_stiff_whiplash",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1764115758985,
+      "tag": "0001_even_stardust",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1764159435484,
+      "tag": "0002_organic_ben_urich",
+      "breakpoints": true
+    }
+  ]
+}
