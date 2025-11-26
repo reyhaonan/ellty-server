@@ -63,6 +63,9 @@ importers:
       pm2:
         specifier: ^6.0.13
         version: 6.0.13
+      tsc:
+        specifier: ^2.0.4
+        version: 2.0.4
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
@@ -1412,6 +1415,10 @@ packages:
     engines: {node: '>=16.20.2'}
     hasBin: true
 
+  tsc@2.0.4:
+    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
+    hasBin: true
+
   tslib@1.9.3:
     resolution: {integrity: sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==}
 
@@ -2745,6 +2752,8 @@ snapshots:
       mylas: 2.1.14
       normalize-path: 3.0.0
       plimit-lit: 1.6.1
+
+  tsc@2.0.4: {}
 
   tslib@1.9.3: {}
 
