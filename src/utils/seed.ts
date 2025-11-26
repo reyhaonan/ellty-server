@@ -104,7 +104,7 @@ const main = async () => {
         depth: 2,
       })
       .returning();
-    const [msg3] = await db
+    await db
       .insert(messages)
       .values({
         threadId: aliceThread.id,
@@ -128,7 +128,7 @@ const main = async () => {
         depth: 1,
       })
       .returning();
-    const [msg5] = await db
+    await db
       .insert(messages)
       .values({
         threadId: aliceThread.id,
@@ -140,7 +140,7 @@ const main = async () => {
         depth: 2,
       })
       .returning();
-    const [msg6] = await db
+    await db
       .insert(messages)
       .values({
         threadId: aliceThread.id,
@@ -179,7 +179,7 @@ const main = async () => {
         depth: 1,
       })
       .returning();
-    const [msg8] = await db
+    await db
       .insert(messages)
       .values({
         threadId: bobThread.id,
@@ -215,7 +215,7 @@ const main = async () => {
         depth: 2,
       })
       .returning();
-    const [msg11] = await db
+    await db
       .insert(messages)
       .values({
         threadId: bobThread.id,
@@ -302,7 +302,7 @@ const main = async () => {
         depth: 5,
       })
       .returning();
-    const [msg17] = await db
+    await db
       .insert(messages)
       .values({
         threadId: charlieThread.id,
@@ -314,7 +314,7 @@ const main = async () => {
         depth: 6,
       })
       .returning();
-    const [msg18] = await db
+    await db
       .insert(messages)
       .values({
         threadId: charlieThread.id,
@@ -351,7 +351,7 @@ const main = async () => {
         depth: 1,
       })
       .returning();
-    const [msg20] = await db
+    await db
       .insert(messages)
       .values({
         threadId: aliceThread2.id,
@@ -363,7 +363,7 @@ const main = async () => {
         depth: 2,
       })
       .returning();
-    const [msg21] = await db
+    await db
       .insert(messages)
       .values({
         threadId: aliceThread2.id,
@@ -400,7 +400,7 @@ const main = async () => {
         depth: 1,
       })
       .returning();
-    const [msg23] = await db
+    await db
       .insert(messages)
       .values({
         threadId: bobThread2.id,
