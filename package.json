@@ -36,6 +36,7 @@
     "drizzle-orm": "^0.44.7",
     "express-session": "^1.18.2",
     "pg": "^8.16.3",
+    "typescript": "^5.9.3",
     "ws": "^8.18.3",
     "zod": "^4.1.13"
   }
