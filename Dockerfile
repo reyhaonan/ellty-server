@@ -1,31 +1,35 @@
-FROM node:20-alpine AS builder
+FROM --platform=linux/amd64 node:22-alpine AS base
 
-WORKDIR /app
-
+FROM base AS deps
+ 
 RUN corepack enable
-
+WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
-COPY tsconfig.json ./
-
-RUN pnpm install
-
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --prod
+ 
+FROM base AS build
+ 
+RUN corepack enable
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile
 COPY . .
 
 RUN pnpm build
 
-
-FROM node:20-alpine
-
+FROM base AS runner
 WORKDIR /app
 
-RUN corepack enable
+COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+COPY --from=build /app/package.json /app/package.json
 
-COPY package.json pnpm-lock.yaml ./
+RUN chown -R node:node /app
 
-RUN pnpm install --prod
+USER node
 
-COPY --from=builder /app/dist ./dist
-
-EXPOSE 3000
-
-CMD ["node", "dist/index.js"]
+EXPOSE 9000
+WORKDIR /app/dist
+CMD node /app/dist/index.js
