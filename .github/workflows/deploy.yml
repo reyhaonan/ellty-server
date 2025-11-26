@@ -94,7 +94,7 @@ jobs:
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
   deploy:
     needs: build
-    environment: "development"
+    environment: "qa"
     runs-on: ubuntu-latest
     steps:
       - name: Execute remote SSH commands using password
