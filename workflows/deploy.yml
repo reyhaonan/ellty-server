@@ -102,12 +102,12 @@ jobs:
       - name: Execute remote SSH commands using password
         uses: appleboy/ssh-action@v1
         env:
-          DB_USER: ${{ vars.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          DB_USER: ${{ vars.DB_USER }}
           DB_NAME: ${{ vars.DB_NAME }}
-          DATABASE_URL: ${{ vars.DATABASE_URL }}
+          DATABASE_URL: postgresql://${{ vars.DB_USER }}:${{ secrets.DB_PASS }}@localhost:5432/${{ vars.DB_NAME }}
           PORT: ${{ vars.PORT }}
-          SESSION_SECRET: ${{ vars.SESSION_SECRET }}
           CORS_ORIGIN: ${{ vars.CORS_ORIGIN }}
         with:
           host: ${{ vars.SSH_HOST }}
