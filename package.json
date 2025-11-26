@@ -10,10 +10,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx src/utils/seed.ts",
     "dev": "tsx watch src/index.ts",
-    "build": "tsc & tsc-alias",
-    "start": "pm2 start dist/index.js --name number-comm-api",
-    "stop": "pm2 stop number-comm-api",
-    "logs": "pm2 logs number-comm-api"
+    "build": "tsc & tsc-alias"
   },
   "tsx": {
     "tsconfig": "./tsconfig.json"
