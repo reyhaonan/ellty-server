@@ -60,9 +60,6 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
-      tsc:
-        specifier: ^2.0.4
-        version: 2.0.4
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
@@ -1041,10 +1038,6 @@ packages:
     engines: {node: '>=16.20.2'}
     hasBin: true
 
-  tsc@2.0.4:
-    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
-    hasBin: true
-
   tsx@4.20.6:
     resolution: {integrity: sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==}
     engines: {node: '>=18.0.0'}
@@ -1923,8 +1916,6 @@ snapshots:
       mylas: 2.1.14
       normalize-path: 3.0.0
       plimit-lit: 1.6.1
-
-  tsc@2.0.4: {}
 
   tsx@4.20.6:
     dependencies:
