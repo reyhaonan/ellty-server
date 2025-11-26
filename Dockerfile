@@ -1,30 +1,15 @@
-FROM node:20-alpine AS builder
+FROM node:18-alpine
 
 WORKDIR /app
 
-RUN corepack enable
-
 COPY package.json pnpm-lock.yaml ./
-COPY tsconfig.json ./
 
-RUN pnpm install
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 RUN pnpm build
-
-
-FROM node:20-alpine
-
-WORKDIR /app
-
-RUN corepack enable
-
-COPY package.json pnpm-lock.yaml ./
-
-RUN pnpm install --prod
-
-COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
