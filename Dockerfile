@@ -1,34 +1,43 @@
+# ---------- Base Builder ----------
 FROM node:20-alpine AS builder
+
 WORKDIR /app
+
+# Enable corepack so pnpm works
 RUN corepack enable
 
-# Copy package files
+# Copy only dependency files first
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-# Copy source and config files
 COPY tsconfig.json ./
-COPY src ./src
 
-# Build with error checking
+# Install all deps (dev + prod) for building
+RUN pnpm install
+
+# Copy source code
+COPY . .
+
+# Build TypeScript + aliases
 RUN pnpm build
-RUN ls -la dist/
 
+
+# ---------- Production Image ----------
 FROM node:20-alpine
+
 WORKDIR /app
 RUN corepack enable
 
-# Copy package files
+# Copy only prod package files
 COPY package.json pnpm-lock.yaml ./
 
-# Install production dependencies
-RUN pnpm install --prod --frozen-lockfile
-
-# Copy built files from builder
-COPY --from=builder /app/dist ./dist
+# Install only production deps
+RUN pnpm install --prod
 
 # Install PM2 globally
-RUN npm install -g pm2
+RUN pnpm add -g pm2
+
+# Copy built output
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
+
 CMD ["pm2-runtime", "dist/index.js"]
