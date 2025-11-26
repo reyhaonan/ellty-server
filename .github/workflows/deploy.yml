@@ -104,14 +104,13 @@ jobs:
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           DB_USER: ${{ vars.DB_USER }}
           DB_NAME: ${{ vars.DB_NAME }}
-          DATABASE_URL: postgresql://${{ vars.DB_USER }}:${{ secrets.DB_PASS }}@localhost:5432/${{ vars.DB_NAME }}
           PORT: ${{ vars.PORT }}
           CORS_ORIGIN: ${{ vars.CORS_ORIGIN }}
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          envs: DB_PORT, DB_USER, DB_PASS, DB_NAME, DATABASE_URL, PORT, SESSION_SECRET, CORS_ORIGIN
+          envs: DB_PORT, DB_USER, DB_PASS, DB_NAME, PORT, SESSION_SECRET, CORS_ORIGIN
           script: |
             cd /opt/num
             docker compose pull

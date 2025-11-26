@@ -7,11 +7,12 @@ RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
 COPY tsconfig.json ./
 
-COPY . .
-
 RUN pnpm install
 
+COPY . .
+
 RUN pnpm build
+
 
 FROM node:20-alpine
 
@@ -21,7 +22,7 @@ RUN corepack enable
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm install --prod
+RUN pnpm install --prod --frozen-lockfile
 
 COPY --from=builder /app/dist ./dist
 

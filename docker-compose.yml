@@ -1,17 +1,17 @@
 services:
   app:
     build: .
+    # image: ghcr.io/reyhaonan/ellty-server:main
     container_name: number-comm-api
-    restart: always
-    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASS}@db:5432/${DB_NAME}
+      PORT: ${PORT}
+      SESSION_SECRET: ${SESSION_SECRET}
+      CORS_ORIGIN: ${CORS_ORIGIN}
     depends_on:
       - db
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: ["pm2-runtime", "dist/index.js"]
 
   db:
     image: postgres:15
